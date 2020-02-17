@@ -37,9 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
+
+    # my apps
+    'mitocw',
+    'nptel',
+    'udacity',
+    'search',
+
+    # debug app
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
+    # debug settings
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+    # stuff from the start
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,8 +89,36 @@ WSGI_APPLICATION = 'edassist.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django',
+        'USER': 'fboi',
+        'PASSWORD': '123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
+    'nptel_db': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nptel',
+        'USER': 'fboi',
+        'PASSWORD': '123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
+    'mitocw_db': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mitocw',
+        'USER': 'fboi',
+        'PASSWORD': '123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    },
+    'udacity_db': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'udacity',
+        'USER': 'fboi',
+        'PASSWORD': '123456789',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -118,3 +160,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# AUTH_USER_MODEL='profile.myUser'
+
+INTERNAL_IPS = [
+    # for debug_toolbar
+    '127.0.0.1'
+]
+
+DATABASE_ROUTERS = ['edassist.databaseRouters.mitocwRouter',
+                    'edassist.databaseRouters.nptelRouter',
+                    'edassist.databaseRouters.udacityRouter']
