@@ -33,6 +33,14 @@ class nptelRouter:
             return 'nptel_db'
         return None
 
+    def db_for_write(self, model, **hints):
+        """
+        Attempts to write nptel models go to nptel_db.
+        """
+        if model._meta.app_label == 'nptel':
+            return 'nptel_db'
+        return None
+
     def allow_migrate(self, db, app_label, model_name=None, **hints):
         """
         Make sure the nptel app only appears in the 'nptel_db'
