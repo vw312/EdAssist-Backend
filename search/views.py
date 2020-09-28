@@ -58,8 +58,8 @@ def caption_nptel(request, youtube_video_id, subjectid):
     # check if the requested captions are already available
     db_manager = nptel.models.YoutubeStuff.objects
     if db_manager.filter(youtube_id__exact=youtube_video_id).exists():
-        result = db_manager.filter(youtube_id__exact=youtube_video_id).values()
-        return JsonResponse(list(result), safe=False)
+        result = list(db_manager.filter(youtube_id__exact=youtube_video_id).values('caption_name', 'captions'))
+        return JsonResponse(result, safe=False)
 
     # if not fetch them using Youtube Data API
     captions = get_captions(youtube_video_id)
@@ -122,12 +122,12 @@ def get_captions(video_id):
     captions_available = response['items']
     to_download = [(video_id, caption['snippet']['name']) for caption in captions_available if (
             caption['snippet']['language'] == 'en' and caption['snippet']['trackKind'] != 'ASR')]
-    captions = [{'name': name, 'captions': download_captions(video_id, name)} for (video_id, name) in
+    captions = [{'caption_name': name, 'captions': download_captions(video_id, name)} for (video_id, name) in
                 to_download]  # captions is a array of dictionaries
 
     # put these captions into the database
     for dictionary in captions:
-        db_manager.create(youtube_id=video_id, caption_name=dictionary['name'],
+        db_manager.create(youtube_id=video_id, caption_name=dictionary['caption_name'],
                           captions=dictionary['captions'])
 
     return captions
