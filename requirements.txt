@@ -4,6 +4,7 @@
 #
 #    pip-compile requirements.txt
 #
+wheel==0.35.1		  # via -r requirements.txt, wheel
 asgiref==3.2.10           # via -r requirements.txt, django
 cachetools==4.1.1         # via -r requirements.txt, google-auth
 certifi==2020.6.20        # via -r requirements.txt, requests
@@ -23,7 +24,7 @@ nltk==3.5                 # via -r requirements.txt
 numpy==1.19.3             # via -r requirements.txt, scikit-learn, scipy
 pip-tools==5.3.1          # via -r requirements.txt
 protobuf==3.13.0          # via -r requirements.txt, google-api-core, googleapis-common-protos
-psycopg2==2.8.6           # via -r requirements.txt
+psycopg2-binary==2.8.6    # via -r requirements.txt
 pyasn1-modules==0.2.8     # via -r requirements.txt, google-auth
 pyasn1==0.4.8             # via -r requirements.txt, pyasn1-modules, rsa
 pytz==2020.1              # via -r requirements.txt, django, google-api-core
