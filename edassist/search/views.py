@@ -107,7 +107,7 @@ def get_captions(video_id):
 
     api_service_name = "youtube"
     api_version = "v3"
-    DEVELOPER_KEY = "AIzaSyBqoAMlUsjCXDPl8PJnvQwgwEsrVORgsAQ"
+    DEVELOPER_KEY = os.environ['YOUTUBE_API_KEY']
 
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, developerKey=DEVELOPER_KEY)

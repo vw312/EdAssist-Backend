@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&bp$hi6fd31s7&d@k3df8@h6+qyz^9l5oc+npork!smq^8#n8+'
+SECRET_KEY = os.environ['DJANGO_SECRET']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
 ALLOWED_HOSTS = []
 
@@ -91,34 +91,34 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django',
-        'USER': 'fboi',
-        'PASSWORD': '123456789',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': os.environ['PGUSER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'HOST': os.environ['PGHOST'],
+        'PORT': os.environ['PGPORT'],
     },
     'nptel_db': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'nptel',
-        'USER': 'fboi',
-        'PASSWORD': '123456789',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': os.environ['PGUSER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'HOST': os.environ['PGHOST'],
+        'PORT': os.environ['PGPORT'],
     },
     'mitocw_db': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mitocw',
-        'USER': 'fboi',
-        'PASSWORD': '123456789',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': os.environ['PGUSER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'HOST': os.environ['PGHOST'],
+        'PORT': os.environ['PGPORT'],
     },
     'udacity_db': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'udacity',
-        'USER': 'fboi',
-        'PASSWORD': '123456789',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': os.environ['PGUSER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'HOST': os.environ['PGHOST'],
+        'PORT': os.environ['PGPORT'],
     }
 }
 
