@@ -9,9 +9,10 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 RUN apt clean all
 
+RUN useradd -m user
+
 COPY . .
 
-RUN useradd -m user
 RUN chown -R user:user /app
 RUN chmod +x entrypoint.sh
 USER user
