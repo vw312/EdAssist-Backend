@@ -124,7 +124,7 @@ def get_captions(video_id):
     to_download = [(video_id, caption['snippet']['name']) for caption in captions_available if (
             caption['snippet']['language'] == 'en' and caption['snippet']['trackKind'] != 'ASR')]
     captions = [{'caption_name': name, 'captions': download_captions(video_id, name)} for (video_id, name) in
-                to_download]  # captions is a array of dictionaries
+                to_download if name != "" ]  # captions is a array of dictionaries, name!="" sometimes empty caption names come
 
     # put these captions into the database
     for dictionary in captions:
