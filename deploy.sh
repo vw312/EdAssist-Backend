@@ -1,4 +1,4 @@
-docker build -t vw312/edassist-backend:latest -t vw312/edassist-backend:$SHA ./client 
+docker build -t vw312/edassist-backend:latest -t vw312/edassist-backend:$SHA ./edassist 
 
 docker push vw312/edassist-backend:latest
 
