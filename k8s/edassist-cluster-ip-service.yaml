@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edassist-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: edassist-backend
+  ports:
+    - port: 8000
+      targetPort: 8000

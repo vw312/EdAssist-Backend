@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['DJANGO_SECRET']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+DEBUG = os.environ['DEBUG'] == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ['HOST']]
 
 
 # Application definition
@@ -92,7 +92,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django',
         'USER': os.environ['PGUSER'],
-        'PASSWORD': os.environ['PGPASSWORD'],
+        'PASSWORD': os.environ['USER_PGPASSWORD'],
         'HOST': os.environ['PGHOST'],
         'PORT': os.environ['PGPORT'],
     },
@@ -100,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'nptel',
         'USER': os.environ['PGUSER'],
-        'PASSWORD': os.environ['PGPASSWORD'],
+        'PASSWORD': os.environ['USER_PGPASSWORD'],
         'HOST': os.environ['PGHOST'],
         'PORT': os.environ['PGPORT'],
     },
@@ -108,7 +108,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mitocw',
         'USER': os.environ['PGUSER'],
-        'PASSWORD': os.environ['PGPASSWORD'],
+        'PASSWORD': os.environ['USER_PGPASSWORD'],
         'HOST': os.environ['PGHOST'],
         'PORT': os.environ['PGPORT'],
     },
@@ -116,7 +116,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'udacity',
         'USER': os.environ['PGUSER'],
-        'PASSWORD': os.environ['PGPASSWORD'],
+        'PASSWORD': os.environ['USER_PGPASSWORD'],
         'HOST': os.environ['PGHOST'],
         'PORT': os.environ['PGPORT'],
     }

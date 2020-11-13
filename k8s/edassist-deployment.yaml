@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edassist-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: edassist-backend
+  template:
+    metadata:
+      labels:
+        component: edassist-backend
+    spec:
+      containers:
+        - name: edassist-backend
+          image: vw312/edassist-backend
+          ports:
+            - containerPort: 8000
+          env:
+            - name: HOST
+              value: '192.168.39.6'
+            - name: DEBUG
+              value: 'False'
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: '5432'
+            - name: PGUSER
+              value: edassist
+            - name: USER_PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: edassist-secrets
+                  key: USER_PGPASSWORD
+            - name: YOUTUBE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: edassist-secrets
+                  key: YOUTUBE_API_KEY
+            - name: DJANGO_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: edassist-secrets
+                  key: DJANGO_SECRET
