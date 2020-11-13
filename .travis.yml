@@ -16,7 +16,7 @@ before_install:
   - gcloud auth activate-service-account --key-file service-account.json
   - gcloud config set project edassist-295508
   - gcloud config set compute/zone us-central1-a
-  - gcloud container clusters get-credentials edassist2
+  - gcloud container clusters get-credentials edassist-backend
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 
 deploy:
