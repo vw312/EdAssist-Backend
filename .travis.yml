@@ -18,7 +18,6 @@ before_install:
   - gcloud config set compute/zone us-central1-a
   - gcloud container clusters get-credentials edassist-backend
   - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-  - sed -i "s/REPLACE_ME/${EMAIL}/g" k8s/issuer.yaml
 
 script:
   - bash ./dummy_test.sh
