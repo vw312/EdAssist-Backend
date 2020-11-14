@@ -7,15 +7,16 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: 'true'
     # UPDATE THIS LINE ABOVE
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/ssl-redirect: 'false'
 spec:
-  # tls:
-  #   - hosts:
-  #       - temp.mightymaharaja.tk
-  #     secretName: temp-mightymaharaja-tk
+  tls:
+    - hosts:
+        - edassist.mightymaharaja.tk
+      secretName: edassist-mightymaharaja-tk
 
   rules:
-    # - host: temp.mightymaharaja.tk
+    - host: edassist.mightymaharaja.tk
      - http:
         paths:
           - path: /?(.*)
