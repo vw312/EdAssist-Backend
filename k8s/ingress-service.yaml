@@ -17,7 +17,7 @@ spec:
 
   rules:
     - host: edassist.mightymaharaja.tk
-     - http:
+      http:
         paths:
           - path: /?(.*)
           # UPDATE THIS LINE ABOVE
