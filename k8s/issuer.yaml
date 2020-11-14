@@ -5,7 +5,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: "REPLACE_ME"
+    email: "facek90394@testbnk.com"
     privateKeySecretRef: #used to store secret key for the http challenge
       name: letsencrypt-prod
     solvers:
